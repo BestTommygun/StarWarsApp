@@ -20,9 +20,9 @@ public class Species : DataItem {
                 let tempSpecies: Species = Species()
                 tempSpecies.name = item["name"] as? String
                 tempSpecies.type = item["classification"] as? String
-                tempSpecies.itemElements.append("height: \((item["average_height"] as? String)!)")
-                tempSpecies.itemElements.append("lifespan: \((item["average_lifespan"] as? String)!)")
-                tempSpecies.itemElements.append("designation: \((item["designation"] as? String)!)")
+                tempSpecies.itemElements.append("height: \((item["average_height"] as? String) ?? "unknown")")
+                tempSpecies.itemElements.append("lifespan: \((item["average_lifespan"] as? String) ?? "unknown")")
+                tempSpecies.itemElements.append("designation: \((item["designation"] as? String) ?? "unknown")")
                 tempSpecies.imageString = "species-image"
                 returnList.append(tempSpecies)
             }

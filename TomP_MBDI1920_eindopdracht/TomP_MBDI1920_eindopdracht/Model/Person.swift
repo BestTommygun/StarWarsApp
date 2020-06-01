@@ -20,12 +20,12 @@ class Person : DataItem {
                 let tempPerson: Person = Person()
                 tempPerson.name = item["name"] as? String
                 tempPerson.type =  item["birth_year"] as? String
-                tempPerson.itemElements.append("\((item["height"] as? String)!) cm")
-                tempPerson.itemElements.append("\((item["mass"] as? String)!) kg")
-                tempPerson.itemElements.append("\((item["hair_color"] as? String)!) hair")
-                tempPerson.itemElements.append("\((item["eye_color"] as? String)!) eye colour")
-                tempPerson.itemElements.append("\((item["skin_color"] as? String)!) skin colour")
-                tempPerson.itemElements.append((item["gender"] as? String)!)
+                tempPerson.itemElements.append("\((item["height"] as? String) ?? "unknown") cm")
+                tempPerson.itemElements.append("\((item["mass"] as? String) ?? "unknown") kg")
+                tempPerson.itemElements.append("\((item["hair_color"] as? String) ?? "unknown") hair")
+                tempPerson.itemElements.append("\((item["eye_color"] as? String) ?? "unknown") eye colour")
+                tempPerson.itemElements.append("\((item["skin_color"] as? String) ?? "unknown") skin colour")
+                tempPerson.itemElements.append((item["gender"] as? String) ?? "unknown")
                 
                 tempPerson.imageString = "people-image"
                 returnList.append(tempPerson)

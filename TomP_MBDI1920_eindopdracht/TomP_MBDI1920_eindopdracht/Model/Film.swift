@@ -20,8 +20,8 @@ public class Film : DataItem {
                 let tempFilm: Film = Film()
                 tempFilm.name = item["title"] as? String
                 tempFilm.type = item["director"] as? String
-                tempFilm.itemElements.append("producer(s) :\((item["producer"] as? String)!)")
-                tempFilm.itemElements.append("released: \((item["release_date"] as? String)!)")
+                tempFilm.itemElements.append("producer(s) :\((item["producer"] as? String) ?? "unknown")")
+                tempFilm.itemElements.append("released: \((item["release_date"] as? String) ?? "unknown")")
                 tempFilm.imageString = "films-image"
                 returnList.append(tempFilm)
             }

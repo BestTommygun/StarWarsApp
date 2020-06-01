@@ -19,11 +19,11 @@ public class Planet : DataItem {
             for item in safePeople {
                 let tempPlanet: Planet = Planet()
                 tempPlanet.name = item["name"] as? String
-                tempPlanet.type = "\((item["diameter"] as? String)!) km diameter"
-                tempPlanet.itemElements.append((item["climate"] as? String)!)
-                tempPlanet.itemElements.append("\((item["population"] as? String)!) inhabitants")
+                tempPlanet.type = "\((item["diameter"] as? String) ?? "unknown ") km diameter"
+                tempPlanet.itemElements.append((item["climate"] as? String) ?? "unknown climate")
+                tempPlanet.itemElements.append("\((item["population"] as? String) ?? "unknown") inhabitants")
                 tempPlanet.itemElements.append((item["terrain"] as? String)!)
-                tempPlanet.itemElements.append("\((item["surface_water"] as? String)!) % surface water")
+                tempPlanet.itemElements.append("\((item["surface_water"] as? String) ?? "unknown") % surface water")
                 tempPlanet.imageString = "planets-image"
                 returnList.append(tempPlanet)
             }

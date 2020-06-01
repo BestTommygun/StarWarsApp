@@ -25,7 +25,10 @@ class HomeTableViewController : UITableViewController {
         //replace with online data if possible
         DispatchQueue.global(qos: .utility).async {
             self.items = SWAPIHelper.instance.getData(disabledCategories: self.filterViewController.getDisabledCategories())
-            self.tableView.reloadData()
+            //needs to be a seperate thread since UI updates cannot be instantiated by the utility thread
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     

@@ -16,6 +16,6 @@ class HomeTableViewCell : UITableViewCell {
     public func setItem(withItem item: DataItem) {
         self.nameLabel.text = item.name
         self.typeLabel.text = item.type
-        self.headerImageView.image = UIImage(named: item.imageString!)
+        self.headerImageView.image = UIImage(named: item.imageString ?? "films-image")
     }
 }

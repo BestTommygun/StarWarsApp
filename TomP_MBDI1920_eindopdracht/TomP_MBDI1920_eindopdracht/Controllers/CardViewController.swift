@@ -30,7 +30,7 @@ public class CardViewController : UIViewController {
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let elementsVC = segue.destination as? DetailViewController {
-            elementsVC.itemElements = (item?.itemElements)!
+            elementsVC.itemElements = item?.itemElements ?? []
         }
     }
 }

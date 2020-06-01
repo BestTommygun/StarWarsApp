@@ -21,11 +21,11 @@ public class Vehicle : DataItem {
                 tempVehicle.name = item["name"] as? String
                 tempVehicle.type = item["vehicle_class"] as? String
                 tempVehicle.imageString = "vehicles-image"
-                tempVehicle.itemElements.append("Model: \((item["model"] as? String)!)")
-                tempVehicle.itemElements.append("cost: \((item["cost_in_credits"] as? String)!) credits")
-                tempVehicle.itemElements.append("crew amount: \((item["crew"] as? String)!)")
-                tempVehicle.itemElements.append("passengers: \((item["passengers"] as? String)!)")
-                tempVehicle.itemElements.append("length: \((item["length"] as? String)!) m")
+                tempVehicle.itemElements.append("Model: \((item["model"] as? String) ?? "unknown")")
+                tempVehicle.itemElements.append("cost: \((item["cost_in_credits"] as? String) ?? "unknown amount of") credits")
+                tempVehicle.itemElements.append("crew amount: \((item["crew"] as? String) ?? "unknown")")
+                tempVehicle.itemElements.append("passengers: \((item["passengers"] as? String) ?? "unknown")")
+                tempVehicle.itemElements.append("length: \((item["length"] as? String) ?? "unknown amount of") m")
                 returnList.append(tempVehicle)
             }
         }

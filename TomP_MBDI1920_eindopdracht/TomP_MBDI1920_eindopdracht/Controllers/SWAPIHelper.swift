@@ -164,8 +164,8 @@ class SWAPIHelper {
         let task = URLSession.shared.dataTask(with: safeURL) {
             data, response, error in
             do {
-                if(data != nil) {
-                    let json = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
+                if let safeData = data {
+                    let json = try JSONSerialization.jsonObject(with: safeData) as! [String: Any]
                     callback(json)
                 }
                 else {
