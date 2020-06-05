@@ -22,7 +22,7 @@ public class CardViewController : UIViewController {
     
     public func buildDetailsPage() {
         if let safeItem = item {
-            elementImage.image = UIImage(named: safeItem.imageString!)
+            elementImage.image = UIImage(named: safeItem.imageString ?? "")
             elementTitle.text = safeItem.name
             elementSubTitle.text = safeItem.type
         }

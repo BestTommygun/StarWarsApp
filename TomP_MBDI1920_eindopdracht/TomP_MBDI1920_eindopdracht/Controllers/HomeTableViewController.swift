@@ -12,19 +12,39 @@ import UIKit
 class HomeTableViewController : UITableViewController {
     //MARK:- properties
     private var items: [DataItem] = []
-    private var detailViewController: DetailViewController?
-    private var filterViewController: FilterViewController = FilterViewController()
+    private var detailVC: DetailViewController?
+    private var filterVC: FilterViewController = FilterViewController()
+    private var createVC: CreateItemViewController?
     
     //MARK:- controller override functions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let safeCreateVC = createVC {
+            if safeCreateVC.itemSaved {
+                self.addItem(withItem: safeCreateVC.itemToCreate)
+                self.tableView.reloadData()
+                createVC?.itemSaved = false
+            }
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //get local data
-        self.items = self.filterViewController.getFilteredItems(withItems: self.loadSavedItems() ?? self.items)
+        self.items = self.filterVC.getFilteredItems(withItems: self.loadSavedItems() ?? self.items)
         self.tableView.reloadData()
         
         //replace with online data if possible
+        let disabledCategories = self.filterVC.getDisabledCategories()//call this here so the UI does not get checked outside the main thread
+        //get non-local data if possible
         DispatchQueue.global(qos: .utility).async {
-            self.items = SWAPIHelper.instance.getData(disabledCategories: self.filterViewController.getDisabledCategories())
+            let newItems = self.items
+            self.items = SWAPIHelper.instance.getData(disabledCategories: disabledCategories)
+            for item in newItems {
+                if(!self.items.contains(item)) {
+                    self.items.append(item)
+                }
+            }
             //needs to be a seperate thread since UI updates cannot be instantiated by the utility thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -35,11 +55,14 @@ class HomeTableViewController : UITableViewController {
     //detects what segue is happening and makes sure the according controller is correctly set
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailVC = segue.destination as? DetailViewController {
-            self.detailViewController = detailVC
+            self.detailVC = detailVC
         }
         if let filterVC = segue.destination as? FilterViewController {
-            filterVC.setDisabledCategories(disabledCategories: filterViewController.getDisabledCategories())
-            self.filterViewController = filterVC
+            filterVC.setDisabledCategories(disabledCategories: filterVC.getDisabledCategories())
+            self.filterVC = filterVC
+        }
+        if let createVC = segue.destination as? CreateItemViewController {
+            self.createVC = createVC
         }
     }
     
@@ -67,11 +90,23 @@ class HomeTableViewController : UITableViewController {
     }
     //select row listener
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailViewController?.itemElements.append(items[indexPath.row].name ?? "")
-        detailViewController?.itemElements.append(items[indexPath.row].type ?? "")
-        detailViewController?.itemElements.append(contentsOf: items[indexPath.row].itemElements)
+        detailVC?.itemElements.append(items[indexPath.row].name ?? "")
+        detailVC?.itemElements.append(items[indexPath.row].type ?? "")
+        detailVC?.itemElements.append(contentsOf: items[indexPath.row].itemElements)
     }
     //MARK:- local data functions
+    private func addItem(withItem item: DataItem) {
+        items.append(item)
+        items.append(contentsOf: items)
+        self.tableView.reloadData()
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: DataItem.ArchiveURL.path)
+        if !isSuccessfulSave {
+            print("Something went wrong when saving item...")
+        }
+        else {
+            print("Item" + (item.name ?? "") + "succesfully saved")
+        }
+    }
     @IBAction func saveAllData() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: DataItem.ArchiveURL.path)
         if isSuccessfulSave {

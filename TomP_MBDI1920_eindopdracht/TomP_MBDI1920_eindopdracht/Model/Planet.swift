@@ -22,7 +22,7 @@ public class Planet : DataItem {
                 tempPlanet.type = "\((item["diameter"] as? String) ?? "unknown ") km diameter"
                 tempPlanet.itemElements.append((item["climate"] as? String) ?? "unknown climate")
                 tempPlanet.itemElements.append("\((item["population"] as? String) ?? "unknown") inhabitants")
-                tempPlanet.itemElements.append((item["terrain"] as? String)!)
+                tempPlanet.itemElements.append((item["terrain"] as? String) ?? "unknown terrain")
                 tempPlanet.itemElements.append("\((item["surface_water"] as? String) ?? "unknown") % surface water")
                 tempPlanet.imageString = "planets-image"
                 returnList.append(tempPlanet)

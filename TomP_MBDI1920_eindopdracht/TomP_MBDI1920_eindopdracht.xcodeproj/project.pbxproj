@@ -17,6 +17,8 @@
 		5013C0BD2485099000B2B4D7 /* species-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 5013C0B72485099000B2B4D7 /* species-image.png */; };
 		5013C0BE2485099000B2B4D7 /* starships-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 5013C0B82485099000B2B4D7 /* starships-image.png */; };
 		5013C0C024850A7000B2B4D7 /* launchscreenImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5013C0BF24850A6F00B2B4D7 /* launchscreenImage.png */; };
+		508AC7EC248A4D4300F134BC /* CreateItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AC7EB248A4D4300F134BC /* CreateItemViewController.swift */; };
+		508AC7EE248A4F6600F134BC /* CreateDetailElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AC7ED248A4F6600F134BC /* CreateDetailElementViewController.swift */; };
 		5095A686247815F30024F14E /* MainBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5095A688247815F30024F14E /* MainBoard.storyboard */; };
 		5095A68C247833050024F14E /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095A68B247833050024F14E /* CardViewController.swift */; };
 		50A16A9F247FDEDC00701A59 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A16A9E247FDEDC00701A59 /* DetailTableViewCell.swift */; };
@@ -48,6 +50,8 @@
 		5013C0B72485099000B2B4D7 /* species-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "species-image.png"; sourceTree = "<group>"; };
 		5013C0B82485099000B2B4D7 /* starships-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starships-image.png"; sourceTree = "<group>"; };
 		5013C0BF24850A6F00B2B4D7 /* launchscreenImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreenImage.png; sourceTree = "<group>"; };
+		508AC7EB248A4D4300F134BC /* CreateItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemViewController.swift; sourceTree = "<group>"; };
+		508AC7ED248A4F6600F134BC /* CreateDetailElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDetailElementViewController.swift; sourceTree = "<group>"; };
 		5095A68A2478166E0024F14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainBoard.storyboard; sourceTree = "<group>"; };
 		5095A68B247833050024F14E /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		50A16A9E247FDEDC00701A59 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				50A16AA0247FEE1100701A59 /* SWAPIHelper.swift */,
 				50A16AA22480034300701A59 /* DetailViewController.swift */,
 				5013C0A024813E3300B2B4D7 /* FilterViewController.swift */,
+				508AC7EB248A4D4300F134BC /* CreateItemViewController.swift */,
+				508AC7ED248A4F6600F134BC /* CreateDetailElementViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,9 +267,11 @@
 				50D5E5C8247442AF00D4EEE9 /* Species.swift in Sources */,
 				50D5E5C42474428A00D4EEE9 /* Film.swift in Sources */,
 				50D5E5C22474410700D4EEE9 /* Lists.swift in Sources */,
+				508AC7EE248A4F6600F134BC /* CreateDetailElementViewController.swift in Sources */,
 				50D5E5D424744D1000D4EEE9 /* HomeTableViewCell.swift in Sources */,
 				5013C0A124813E3300B2B4D7 /* FilterViewController.swift in Sources */,
 				50A16A9F247FDEDC00701A59 /* DetailTableViewCell.swift in Sources */,
+				508AC7EC248A4D4300F134BC /* CreateItemViewController.swift in Sources */,
 				5013C0A32481437300B2B4D7 /* Planet.swift in Sources */,
 				50D5E5D224744CF100D4EEE9 /* HomeTableViewController.swift in Sources */,
 				50D5E5CC247442CA00D4EEE9 /* Starship.swift in Sources */,
